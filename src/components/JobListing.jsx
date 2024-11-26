@@ -19,7 +19,9 @@ function JobListing() {
           </span>
         </div>
         <div className="text-lg lg:text-2xl font-bold">
-          Senior Frontend Developer
+          <span className="cursor-pointer hover:text-desaturated-dark-cyan-primary">
+            Senior Frontend Developer
+          </span>
         </div>
         <div className="flex gap-2 lg:gap-4 lg:text-xl font-medium text-dark-grayish-cyan">
           <span>1d ago</span>
@@ -30,19 +32,19 @@ function JobListing() {
         </div>
       </div>
       <div className="border-t lg:border-0 lg:ms-auto border-dark-grayish-cyan/75 pt-4 flex flex-wrap gap-4 font-bold text-desaturated-dark-cyan-primary">
-        <span className="px-3 py-1.5 rounded bg-desaturated-dark-cyan-primary/10">
+        <span className="px-3 py-1.5 rounded cursor-pointer bg-desaturated-dark-cyan-primary/10 hover:bg-desaturated-dark-cyan-primary hover:text-light-grayish-cyan-badge">
           Frontend
         </span>
-        <span className="px-3 py-1.5 rounded bg-desaturated-dark-cyan-primary/10">
+        <span className="px-3 py-1.5 rounded cursor-pointer bg-desaturated-dark-cyan-primary/10 hover:bg-desaturated-dark-cyan-primary hover:text-light-grayish-cyan-badge">
           Senior
         </span>
-        <span className="px-3 py-1.5 rounded bg-desaturated-dark-cyan-primary/10">
+        <span className="px-3 py-1.5 rounded cursor-pointer bg-desaturated-dark-cyan-primary/10 hover:bg-desaturated-dark-cyan-primary hover:text-light-grayish-cyan-badge">
           HTML
         </span>
-        <span className="px-3 py-1.5 rounded bg-desaturated-dark-cyan-primary/10">
+        <span className="px-3 py-1.5 rounded cursor-pointer bg-desaturated-dark-cyan-primary/10 hover:bg-desaturated-dark-cyan-primary hover:text-light-grayish-cyan-badge">
           CSS
         </span>
-        <span className="px-3 py-1.5 rounded bg-desaturated-dark-cyan-primary/10">
+        <span className="px-3 py-1.5 rounded cursor-pointer bg-desaturated-dark-cyan-primary/10 hover:bg-desaturated-dark-cyan-primary hover:text-light-grayish-cyan-badge">
           Javascript
         </span>
       </div>
