@@ -8,6 +8,7 @@ export default {
       "light-grayish-cyan-badge": "#EEF6F6",
       "dark-grayish-cyan": "#7B8E8E",
       "very-dark-grayish-cyan": "#2C3A3A",
+      "very-light-cyan": "#F8F8F8",
     },
     extend: {},
   },
