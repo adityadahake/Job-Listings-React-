@@ -1,6 +1,9 @@
 import { useState } from "react";
+
 import JobListing from "./components/JobListing";
 import TagFilterBar from "./components/TagFilterBar";
+
+import { listingsArray } from "./assets/data/data";
 
 function App() {
   const [activeTags, setActiveTags] = useState([
@@ -10,6 +13,8 @@ function App() {
     "CSS",
     "Javascript",
   ]);
+
+  const listings = listingsArray;
 
   return (
     <div className="min-h-screen bg-desaturated-dark-cyan-primary bg-opacity-15 relative">
@@ -33,8 +38,9 @@ function App() {
       {/* Listings */}
       <div className="container lg:max-w-[1200px] mx-auto">
         <div className="flex flex-col gap-12 lg:gap-10 p-6">
-          <JobListing />
-          <JobListing />
+          {listings.map((listing) => (
+            <JobListing key={listing.id} listing={listing} />
+          ))}
         </div>
       </div>
     </div>
