@@ -1,10 +1,10 @@
 import removeIcon from "../assets/images/icon-remove.svg";
 
 function TagFilterBar({ activeTags = [], setActiveTags }) {
-  const handleRemove = (index) => {
-    const newArray = activeTags.filter((tag, i) => i !== index);
-    setActiveTags(newArray);
-  };
+  const handleRemove = (index) =>
+    setActiveTags(activeTags.filter((tag, i) => i !== index));
+
+  const handleClearAll = () => setActiveTags([]);
 
   return (
     <div className="px-6 py-3 lg:px-10 rounded shadow-lg flex items-center whitespace-nowrap bg-very-light-cyan shadow-desaturated-dark-cyan-primary/30 font-bold text-desaturated-dark-cyan-primary">
@@ -23,7 +23,10 @@ function TagFilterBar({ activeTags = [], setActiveTags }) {
           </span>
         ))}
       </div>
-      <div className="ms-auto cursor-pointer hover:underline text-dark-grayish-cyan hover:text-desaturated-dark-cyan-primary">
+      <div
+        onClick={handleClearAll}
+        className="ms-auto cursor-pointer hover:underline text-dark-grayish-cyan hover:text-desaturated-dark-cyan-primary"
+      >
         Clear
       </div>
     </div>
