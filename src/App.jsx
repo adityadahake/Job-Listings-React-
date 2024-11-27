@@ -13,7 +13,7 @@ function App() {
         </div>
       </div>
       <div className="container lg:max-w-[1200px] mx-auto">
-        <div className="flex flex-col gap-10 p-6">
+        <div className="flex flex-col gap-12 lg:gap-10 p-6">
           <JobListing />
           <JobListing />
         </div>
