@@ -16,19 +16,20 @@ function App() {
     setJobListings(JobListingsData);
   }, []);
 
-  const filterListings = () => {
+  useEffect(() => {
     let filteredList = originalList;
-    activeTags.forEach((tag) => {
-      filteredList = filteredList.filter(
-        (job) =>
-          tag === job.role ||
-          tag === job.level ||
-          job.languages.includes(tag) ||
-          job.tools.includes(tag)
-      );
-    });
+    if (activeTags.length !== 0)
+      activeTags.forEach((tag) => {
+        filteredList = filteredList.filter(
+          (job) =>
+            tag === job.role ||
+            tag === job.level ||
+            job.languages.includes(tag) ||
+            job.tools.includes(tag)
+        );
+      });
     setJobListings(filteredList);
-  };
+  }, [activeTags, originalList]);
 
   return (
     <div className="min-h-screen bg-desaturated-dark-cyan-primary bg-opacity-15 relative">
@@ -49,12 +50,6 @@ function App() {
       ) : (
         <div className="h-12"></div>
       )}
-      <div
-        onClick={filterListings}
-        className="m-3 w-24 text-center rounded cursor-pointer bg-very-dark-grayish-cyan hover:bg-desaturated-dark-cyan-primary text-very-light-cyan"
-      >
-        Filter
-      </div>
       {/* Listings */}
       <div className="container lg:max-w-[1200px] mx-auto">
         <div className="flex flex-col gap-12 lg:gap-10 p-6">
