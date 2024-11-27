@@ -25,7 +25,12 @@ function JobListing({
   };
 
   return (
-    <div className="border-l-4 px-6 py-9 lg:px-10 relative rounded shadow-lg flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 whitespace-nowrap bg-very-light-cyan border-desaturated-dark-cyan-primary shadow-desaturated-dark-cyan-primary/30">
+    <div
+      className={"px-6 py-9 lg:px-10 relative rounded shadow-lg flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-6 whitespace-nowrap bg-very-light-cyan border-desaturated-dark-cyan-primary shadow-desaturated-dark-cyan-primary/30".concat(
+        listing.featured && " border-l-4"
+      )}
+    >
+      <div className="hidden border-l-4"></div>
       {/* Logo */}
       <div className="w-16 h-16 lg:w-fit lg:h-fit absolute lg:static -top-8">
         <img src={listing.logo} alt={listing.company} />
