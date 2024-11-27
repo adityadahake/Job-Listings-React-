@@ -10,7 +10,12 @@ export default {
       "very-dark-grayish-cyan": "#2C3A3A",
       "very-light-cyan": "#F8F8F8",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        desktop: "url('/bg-header-desktop.svg')",
+        mobile: "url('/bg-header-mobile.svg')",
+      },
+    },
   },
   plugins: [],
 };
