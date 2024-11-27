@@ -1,17 +1,36 @@
+import { useState } from "react";
 import JobListing from "./components/JobListing";
 import TagFilterBar from "./components/TagFilterBar";
 
 function App() {
+  const [activeTags, setActiveTags] = useState([
+    "Frontend",
+    "Senior",
+    "HTML",
+    "CSS",
+    "Javascript",
+  ]);
+
   return (
     <div className="min-h-screen bg-desaturated-dark-cyan-primary bg-opacity-15 relative">
+      {/* Header */}
       <div className="h-36 lg:h-44 bg-desaturated-dark-cyan-primary bg-mobile lg:bg-desktop bg-cover bg-center"></div>
-      <div className="relative w-full -top-8">
-        <div className="container lg:max-w-[1200px] mx-auto">
-          <div className="px-6">
-            <TagFilterBar />
+      {/* Filter */}
+      {activeTags.length > 0 ? (
+        <div className="relative w-full -top-8">
+          <div className="container lg:max-w-[1200px] mx-auto">
+            <div className="px-6">
+              <TagFilterBar
+                activeTags={activeTags}
+                setActiveTags={setActiveTags}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="h-12"></div>
+      )}
+      {/* Listings */}
       <div className="container lg:max-w-[1200px] mx-auto">
         <div className="flex flex-col gap-12 lg:gap-10 p-6">
           <JobListing />
