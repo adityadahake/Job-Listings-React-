@@ -26,11 +26,15 @@ function App() {
         setOriginalList(JobListingsData);
         setJobListings(JobListingsData);
       })
-      .catch((err) =>
-        setErrorMessage(
-          "Something Went Wrong! Please try again after some time."
-        )
-      );
+      .catch((err) => {
+        if (err.code === "ERR_NETWORK") {
+          setErrorMessage("API Server Offline");
+        } else {
+          setErrorMessage(
+            "Something Went Wrong! Please try again after some time."
+          );
+        }
+      });
   }, []);
 
   useEffect(() => {
@@ -53,7 +57,10 @@ function App() {
       {/* Header */}
       <div className="h-36 lg:h-44 bg-desaturated-dark-cyan-primary bg-mobile lg:bg-desktop bg-cover bg-center"></div>
       {/* Error Message */}
-      <div hidden={!errorMessage} className="text-2xl font-bold px-9 py-6">
+      <div
+        hidden={!errorMessage}
+        className="text-2xl font-bold px-9 py-6 text-very-dark-grayish-cyan"
+      >
         {errorMessage}
       </div>
       {/* Filter */}
