@@ -1,19 +1,36 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 import JobListing from "./components/JobListing";
 import TagFilterBar from "./components/TagFilterBar";
-
-import JobListingsData from "./assets/data/data.json";
 
 function App() {
   const [activeTags, setActiveTags] = useState([]);
   const [jobListings, setJobListings] = useState([]);
   const [originalList, setOriginalList] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // Get job listings - import from json or API call
   useEffect(() => {
-    setOriginalList(JobListingsData);
-    setJobListings(JobListingsData);
+    // Fetch Data from database
+    const apiUrl = import.meta.env.VITE_LISTING_API_BASE_URL + "/listing/all";
+    axios
+      .get(apiUrl)
+      .then((res) => {
+        // modify fetched data according to frontend schema
+        const JobListingsData = res.data.map((listing) => ({
+          ...listing,
+          languages: listing.languages.map((language) => language.name),
+          tools: listing.tools.map((tool) => tool.name),
+        }));
+
+        setOriginalList(JobListingsData);
+        setJobListings(JobListingsData);
+      })
+      .catch((err) =>
+        setErrorMessage(
+          "Something Went Wrong! Please try again after some time."
+        )
+      );
   }, []);
 
   useEffect(() => {
@@ -35,6 +52,10 @@ function App() {
     <div className="min-h-screen bg-desaturated-dark-cyan-primary bg-opacity-15 relative">
       {/* Header */}
       <div className="h-36 lg:h-44 bg-desaturated-dark-cyan-primary bg-mobile lg:bg-desktop bg-cover bg-center"></div>
+      {/* Error Message */}
+      <div hidden={!errorMessage} className="text-2xl font-bold px-9 py-6">
+        {errorMessage}
+      </div>
       {/* Filter */}
       {activeTags.length > 0 ? (
         <div className="relative w-full -top-8">
